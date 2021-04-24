@@ -99,7 +99,7 @@
   },
   {
     "domain": "messenger",
-    "visits": 523,
+    "visits": 552,
     "color": "#0078FF"
   },
   {
@@ -138,7 +138,7 @@
   },
   {
     "domain": "nytimes",
-    "visits": 266,
+    "visits": 293,
     "color": "black",
     "label": "The New York Times"
   },
@@ -376,7 +376,8 @@
   },
   {
     "domain": "washtenaw",
-    "visits": 32
+    "visits": 32,
+    "label": "Washtenaw County"
   },
   {
     "domain": "gist.github",
@@ -386,36 +387,35 @@
   },
   {
     "domain": "hltv",
-    "visits": 30
-  },
-  {
-    "domain": "l.messenger",
-    "visits": 29
+    "visits": 30,
+    "label": "HLTV"
   },
   {
     "domain": "woocommerce",
-    "visits": 28
+    "visits": 28,
+    "label": "WooCommerce"
   },
   {
     "domain": "mlive",
-    "visits": 28
+    "visits": 28,
+    "label": "MLive"
   },
   {
     "domain": "umflint",
-    "visits": 28
+    "visits": 28,
+    "color": "#FFCB05",
+    "label": "U-M Flint"
   },
   {
     "domain": "developer.wordpress",
-    "visits": 27
+    "visits": 27,
+    "label": "WordPress Developer"
   },
   {
     "domain": "finance.umich",
     "visits": 27,
-    "color": "#FFCB05"
-  },
-  {
-    "domain": "myaccount.nytimes",
-    "visits": 27
+    "color": "#FFCB05",
+    "label": "U-M Finance"
   },
   {
     "domain": "housing.umich",
