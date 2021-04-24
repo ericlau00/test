@@ -1,0 +1,5 @@
+# SQL database files
+*.db*
+
+# Domain mapping
+domains.json
