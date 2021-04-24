@@ -42,3 +42,14 @@ header h1{
 article section {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+.d3-tip {
+    font-family: sans-serif;
+    font-size: 11px;
+    pointer-events: none;
+    width: 160px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 2px 1px gray;
+}
