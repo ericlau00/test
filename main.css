@@ -5,6 +5,7 @@ html {
 body {
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
 }
 
 main {
@@ -30,17 +31,57 @@ article {
     padding: 1rem;
     max-width: 700px;
     position: relative;
-    top: -40vh;
+    margin-top: -40vh;
 }
 
-header h1{
+header h1 {
     font-size: 2rem;
     font-weight: bold;
     margin: 0;
+    margin-bottom: 0.75rem;
+}
+
+header address {
+    font-style: normal;
+    font-weight: bold;
 }
 
 article section {
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.graphic-description p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+
+#bubble-container {
+    height: fit-content;
+}
+
+#bubble-container figure {
+    position: sticky;
+    top: 10vh;
+}
+
+.step-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250px;
+}
+
+.step {
+    width: 60%;
+    height: 1200px;
+    padding: 1rem;
+}
+
+.step p {
+    background-color: white;
+    padding: 1rem;
 }
 
 .d3-tip {

@@ -30,7 +30,8 @@
   {
     "domain": "other",
     "visits": 3931,
-    "color": "lightgray"
+    "color": "lightgray",
+    "label": "Other"
   },
   {
     "domain": "instagram",
