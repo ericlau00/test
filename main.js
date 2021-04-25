@@ -43,6 +43,8 @@ window.onload = async () => {
             .padding(3)
             (hierarchy);
 
+    const fill_circle = d => ("color" in d.data) ? d.data.color : "gray";
+
     let leaf = 
         bubble.selectAll('g')
             .data(pack.leaves())
@@ -54,7 +56,7 @@ window.onload = async () => {
             .attr('r', d => d.r)
             .attr('stroke', 'black')
             .attr('stroke-width', 0)
-            .attr('fill', d => 'color' in d.data ? d.data.color : 'gray')
+            .attr('fill', fill_circle)
 
     let tooltip = 
         d3.select('main')
@@ -95,15 +97,156 @@ window.onload = async () => {
                 .attr('stroke-width', 0)
         })
 
-    // circle
-    //     .filter(d => ("color" in d.data) ? d.data.color !== "#FFFF64" : true)
-    //     .remove();
-    let container = d3.select('#bubble-container');
-    let figure = container.select('figure');
-    let section = container.select('.step-container');
-    let step = section.selectAll('.step');
+    const trans = () => d3
+            .transition()
+            .duration(500)
+            .ease(d3.easeLinear);
+
+    const is_genius = d => ("color" in d.data) ? d.data.color === "#FFFF64" : false;
+    let not_genius = circle.filter(d => !is_genius(d))
+    let genius = circle.filter(is_genius);
+
+    let swarm_data = await d3.json('genius.json');
+    swarm_data.reverse();
+    let time = d3.timeParse('%Y-%m-%d %H:%M:%S');
+    let tformat = d3.timeFormat("%I %p")
+
+    const margin = {left: 25, bottom: 20, right: 40};
+
+    let x = d3.scaleTime()
+        .domain(d3.extent(swarm_data, d => time(d.time))).nice()
+        .range([margin.left, width - margin.right]);
+
+    let axis = bubble.append('g')
+        .attr('transform', `translate(0, ${height - margin.bottom})`)
+        .call(d3.axisBottom(x).tickFormat(tformat))
+        .attr('visibility', 'hidden');
+
+    let geniuses = bubble.selectAll('.genius')
+        .data(swarm_data)
+            .join('circle')
+                .attr('class', 'genius')
+                .attr('cx', d => x(time(d.time)))
+                .attr('cy', height / 2)
+                .attr('r', 0)
+                .attr('stroke-width', 1)
+                .attr('fill', 'transparent');
+
+    geniuses
+    .on('mouseenter', function(e, d) {
+        if ("title" in d) {
+            tooltip
+            .style('display', 'block')
+            .html(`
+                <b>${d.title}</b><br>
+                ${d.time.toString()}`)
+        }
+        d3.select(this)
+            .attr('stroke-width', 2)
+    })
+    .on('mousemove', function(e) {
+        let x = e.pageX + 5;
+        let shift = (x > window.innerWidth * 0.5) ? x - 170 : x;
+        tooltip
+            .style('visibility', 'visible')
+            .style('top', `${e.pageY - 40}px`)
+            .style('left', `${shift}px`)
+    })
+    .on('mouseleave', function() {
+        tooltip
+            .style('display', 'none');
+        d3.select(this)
+            .attr('stroke-width', 1)
+    })
+
+    let tick = () => {
+        bubble.selectAll('.genius')
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+    }
+
+    let sim = d3.forceSimulation(swarm_data)
+        .force('x', d3.forceX(d => x(time(d.time))).strength(0.75))
+        .force('y', d3.forceY(height / 2).strength(0.05))
+        .force('collide', d3.forceCollide(5))
+
+    sim.tick(500);
+    tick();
 
     let scoller = scrollama();
+    scoller
+        .setup({
+            step: ".step",
+            offset: 0.75,
+            // debug: true
+        })
+        .onStepEnter(async res =>  {
+            console.log("enter", res)
+            if (res.index === 0 && res.direction === "down") {
+                not_genius
+                    .transition(trans())
+                    .attr('fill', 'transparent')
+                    .attr('pointer-events', 'none');
+
+                let t = genius.select(function() {
+                    return this.parentNode
+                }).attr('transform');
+
+                genius
+                    .transition(trans())
+                    .attr('stroke-width', 1)
+                    .attr('pointer-events', 'none')
+                    .attr('cx', (width / 2) - Number(t.substring(10, t.indexOf(','))))
+                    .transition()
+                    .delay(1500)
+                    .attr('fill', 'transparent')
+                    .attr('stroke-width', 0);
+
+                geniuses
+                    .transition(trans())
+                    .delay(1500)
+                    .attr('r', 7)
+                    .attr('stroke', 'black')
+                    .attr('fill', "#FFFF64")
+
+                axis.attr('visibility', 'visible');
+
+            }
+            if (res.index === 1 && res.direction === "down") {
+                geniuses
+                    .transition(trans())
+                    .attr('fill', d => d.new ? "#FFFF64": "gray");
+            }
+        })
+        .onStepExit(res => {
+            console.log("exit", res)
+            if (res.index === 0 && res.direction === "up") {
+                not_genius
+                    .transition(trans())
+                    .attr('fill', fill_circle)
+                    .attr('pointer-events', 'visiblePainted');
+
+                genius
+                    .transition(trans())
+                    .attr('fill', "#FFFF64")
+                    .attr('pointer-events', 'visiblePainted')
+                    .attr('stroke-width', 0)
+                    .attr('cx', 0)
+
+                geniuses
+                    .transition(trans())
+                    .attr('r', 0)
+                    .attr('stroke', 'transparent')
+                    .attr('fill', "transparent")
+
+                axis.attr('visibility', 'hidden');
+            }
+            if (res.index === 1 && res.direction === "up") {
+                geniuses
+                    .transition(trans())
+                    .attr('fill', "#FFFF64");
+            }
+        })
 
     draw_head();
 }
