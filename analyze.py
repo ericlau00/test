@@ -26,6 +26,7 @@ cur = con.cursor()
 
 count = 0
 g = set()
+extra = list()
 prev = tuple()
 
 songs = list()
@@ -61,6 +62,13 @@ for row in cur.execute(
                             'title': row[2]
                         })
                     g.add(row[2])
+                else:
+                    print(domain)
+                    extra.append({
+                        'time': row[0],
+                        # 'url': row[4],
+                        'domain': domain
+                    })
                     count += 1
                     # songs.add(row[2])
                 # domain_set.add(domain)
@@ -80,7 +88,13 @@ for row in cur.execute(
                     'title': row[2]
                 })
             g.add(row[2])
+        else:
             count += 1
+            extra.append({
+                'time': row[0],
+                'domain': domain
+            })
+            print(domain)
             # songs.add(row[2])
         # domain_set.add(domain)
 
@@ -106,5 +120,5 @@ print(len(d), count)
 # with open('domain_top_tmp.json', 'w') as f:
 #     dump(d, f, indent=2)
 
-with open('genius.json', 'w') as f:
-    dump(songs, f, indent=2, ensure_ascii=False)
+with open('extra.json', 'w') as f:
+    dump(extra, f, indent=2, ensure_ascii=False)

@@ -132,35 +132,39 @@ window.onload = async () => {
                 .attr('stroke-width', 1)
                 .attr('fill', 'transparent');
 
-    geniuses
-    .on('mouseenter', function(e, d) {
-        if ("title" in d) {
-            tooltip
-            .style('display', 'block')
-            .html(`
-                <b>${d.title}</b><br>
-                ${d.time.toString()}`)
-        }
-        d3.select(this)
-            .attr('stroke-width', 2)
-    })
-    .on('mousemove', function(e) {
-        let x = e.pageX + 5;
-        let shift = (x > window.innerWidth * 0.5) ? x - 170 : x;
-        tooltip
-            .style('visibility', 'visible')
-            .style('top', `${e.pageY - 40}px`)
-            .style('left', `${shift}px`)
-    })
-    .on('mouseleave', function() {
-        tooltip
-            .style('display', 'none');
-        d3.select(this)
-            .attr('stroke-width', 1)
-    })
+    function set_mouse(selection) {
+        selection
+            .on('mouseenter', function(e, d) {
+                if ("title" in d) {
+                    tooltip
+                    .style('display', 'block')
+                    .html(`
+                        <b>${d.title}</b><br>
+                        ${d.time.toString()}`)
+                }
+                d3.select(this)
+                    .attr('stroke-width', 2)
+            })
+            .on('mousemove', function(e) {
+                let x = e.pageX + 5;
+                let shift = (x > window.innerWidth * 0.5) ? x - 170 : x;
+                tooltip
+                    .style('visibility', 'visible')
+                    .style('top', `${e.pageY - 40}px`)
+                    .style('left', `${shift}px`)
+            })
+            .on('mouseleave', function() {
+                tooltip
+                    .style('display', 'none');
+                d3.select(this)
+                    .attr('stroke-width', 1)
+            })
+    }
+
+    set_mouse(geniuses);
 
     let tick = () => {
-        bubble.selectAll('.genius')
+        geniuses
             .attr('cx', d => d.x)
             .attr('cy', d => d.y)
     }
@@ -169,9 +173,10 @@ window.onload = async () => {
         .force('x', d3.forceX(d => x(time(d.time))).strength(0.75))
         .force('y', d3.forceY(height / 2).strength(0.05))
         .force('collide', d3.forceCollide(5))
+        .on('tick', tick)
 
-    sim.tick(500);
-    tick();
+    let extra = await d3.json('./extra.json');
+    let combine = swarm_data.concat(extra);
 
     let scoller = scrollama();
     scoller
@@ -197,25 +202,45 @@ window.onload = async () => {
                     .attr('stroke-width', 1)
                     .attr('pointer-events', 'none')
                     .attr('cx', (width / 2) - Number(t.substring(10, t.indexOf(','))))
-                    .transition()
-                    .delay(1500)
+            }
+            if (res.index === 1 && res.direction === "down") {
+                genius 
+                    .transition(trans())
                     .attr('fill', 'transparent')
                     .attr('stroke-width', 0);
 
                 geniuses
                     .transition(trans())
-                    .delay(1500)
                     .attr('r', 7)
                     .attr('stroke', 'black')
                     .attr('fill', "#FFFF64")
 
                 axis.attr('visibility', 'visible');
-
             }
-            if (res.index === 1 && res.direction === "down") {
+            if (res.index === 2 && res.direction === "down") {
                 geniuses
                     .transition(trans())
                     .attr('fill', d => d.new ? "#FFFF64": "gray");
+            }
+            if (res.index === 3 && res.direction === "down") {
+                sim.restart();
+
+                geniuses = geniuses.data(combine)
+                    .join(
+                        enter => enter
+                            .append('circle')
+                            .call(enter => enter.transition(trans()).attr('r', 7))
+                            .attr('class', 'genius')
+                            .attr('fill', d => ("color" in d) ? d.color : 'lightgray')
+                            .attr('stroke', 'black'),
+                        update => update,
+                        exit => exit.remove()
+                    );
+
+                sim.nodes(combine)
+                sim.alpha(1).restart();
+
+                set_mouse(geniuses);
             }
         })
         .onStepExit(res => {
@@ -232,7 +257,14 @@ window.onload = async () => {
                     .attr('pointer-events', 'visiblePainted')
                     .attr('stroke-width', 0)
                     .attr('cx', 0)
-
+            }
+            if (res.index === 1 && res.direction === "up") {
+                genius
+                    .transition(trans())
+                    .attr('fill', "#FFFF64")
+                    .attr('pointer-events', 'none')
+                    .attr('stroke-width', 1)
+                    
                 geniuses
                     .transition(trans())
                     .attr('r', 0)
@@ -241,10 +273,25 @@ window.onload = async () => {
 
                 axis.attr('visibility', 'hidden');
             }
-            if (res.index === 1 && res.direction === "up") {
+            if (res.index === 2 && res.direction === "up") {
                 geniuses
                     .transition(trans())
                     .attr('fill', "#FFFF64");
+            }
+            if (res.index === 3 && res.direction === "up") {
+                sim.restart();
+
+                geniuses = geniuses.data(swarm_data)
+                    .join(
+                        enter => enter,
+                        update => update,
+                        exit => exit.remove()
+                    );
+
+                sim.nodes(swarm_data)
+                sim.alpha(1).restart();
+
+                set_mouse(geniuses);
             }
         })
 
