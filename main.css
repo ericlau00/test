@@ -61,7 +61,8 @@ article section {
 
 #bubble-container figure {
     position: sticky;
-    top: 10vh;
+    top: 5vh;
+    margin: 0.5rem;
 }
 
 .step-container {

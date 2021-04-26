@@ -47,6 +47,7 @@ cur = con.cursor()
 
 count = 0
 g = set()
+x = list()
 extra = list()
 prev = tuple()
 
@@ -90,7 +91,8 @@ for row in cur.execute(
                         # 'url': row[4],
                         'domain': domain
                     })
-                    count += 1
+                count += 1
+                x.append(row[0])
                     # songs.add(row[2])
                 # domain_set.add(domain)
     else:
@@ -110,11 +112,13 @@ for row in cur.execute(
                 })
             g.add(row[2])
         else:
-            count += 1
             extra.append({
                 'time': row[0],
                 'domain': domain
             })
+        count += 1
+        x.append(row[0])
+        
             # print(domain)
             # songs.add(row[2])
         # domain_set.add(domain)
@@ -138,6 +142,8 @@ d = sorted(d, key=lambda item: item['visits'], reverse=True)
 
 print(len(d), count)
 
+with open('test.json', 'w') as f:
+    dump(x, f, indent=2)
 # with open('domain_top_tmp.json', 'w') as f:
 #     dump(d, f, indent=2)
 

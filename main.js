@@ -111,7 +111,7 @@ window.onload = async () => {
     let time = d3.timeParse('%Y-%m-%d %H:%M:%S');
     let tformat = d3.timeFormat("%I %p")
 
-    const margin = {left: 25, bottom: 20, right: 40};
+    const margin = {left: 25, bottom: 20, right: 25, top: 20};
 
     let x = d3.scaleTime()
         .domain(d3.extent(swarm_data, d => time(d.time))).nice()
@@ -186,7 +186,6 @@ window.onload = async () => {
             // debug: true
         })
         .onStepEnter(async res =>  {
-            console.log("enter", res)
             if (res.index === 0 && res.direction === "down") {
                 not_genius
                     .transition(trans())
@@ -244,7 +243,6 @@ window.onload = async () => {
             }
         })
         .onStepExit(res => {
-            console.log("exit", res)
             if (res.index === 0 && res.direction === "up") {
                 not_genius
                     .transition(trans())
@@ -295,5 +293,47 @@ window.onload = async () => {
             }
         })
 
+    const cheight = 200 * 98;
+    let cdata = await d3.json('./test.json');
+
+    const lm = 50;
+
+    let yScale = d3.scaleTime()
+        .domain(d3.extent(cdata, d => time(d))).nice(d3.timeDay.every(1))
+        .range([margin.top, cheight - margin.bottom]);
+
+    let cal = d3.select('#calendar')
+        .attr('viewBox', [0, 0, width, cheight])
+        .attr('font-family', 'sans-serif')
+
+    let dformat = d3.timeFormat('%b %d')
+
+    cal.append('g')
+        .attr('transform', `translate(0, 0)`)
+        .call(d3
+            .axisRight(yScale)
+            .tickFormat((d, i) => (i % 4 === 0) ? dformat(d) : tformat(d))
+            .ticks(d3.timeHour.every(6))
+            .tickSize(width - margin.right)
+            )
+        .call(g => g.select('.domain').remove())
+        .call(g => {
+            g.selectAll('.tick line').filter(Number)
+                .attr('stroke', '#c0c0c0')
+                .attr('stroke-dasharray', '2,2')
+            g.selectAll('.tick text')
+                .attr('x', 0)
+                .attr('dy', -5)
+                .attr('font-weight', (d, i) => (i % 4 === 0) ? 'bold': 'normal')
+                .attr('text-anchor', 'start')
+        })
+
+    cal.selectAll('circle')
+        .data(cdata)
+        .join('circle')
+            .attr('r', 3)
+            .attr('cx', d => (Math.random() * (width - lm - margin.right)) + lm)
+            .attr('cy', d => yScale(time(d)))
+            .attr('fill', 'gray')
     draw_head();
 }
