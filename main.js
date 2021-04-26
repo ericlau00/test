@@ -1,3 +1,28 @@
+function wrap(text, width) {
+    text.each(function () {
+        let text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1, // ems
+            y = text.attr("y"),
+            x = text.attr("x"),
+            dy = 1,
+            tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+            }
+        }
+    });
+}
+
 const delay = time => {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -293,13 +318,13 @@ window.onload = async () => {
             }
         })
 
-    const cheight = 200 * 98;
+    const cheight = 300 * 98;
     let cdata = await d3.json('./test.json');
 
     const lm = 50;
 
     let yScale = d3.scaleTime()
-        .domain(d3.extent(cdata, d => time(d))).nice(d3.timeDay.every(1))
+        .domain(d3.extent(cdata, d => time(d.time))).nice(d3.timeDay.every(1))
         .range([margin.top, cheight - margin.bottom]);
 
     let cal = d3.select('#calendar')
@@ -331,9 +356,75 @@ window.onload = async () => {
     cal.selectAll('circle')
         .data(cdata)
         .join('circle')
-            .attr('r', 3)
+            .attr('r', 4)
+            // .attr('cx', (d, i) => (i * 7) % (width - lm - margin.right) + lm)
             .attr('cx', d => (Math.random() * (width - lm - margin.right)) + lm)
-            .attr('cy', d => yScale(time(d)))
-            .attr('fill', 'gray')
+            .attr('cy', d => yScale(time(d.time)))
+            .attr('fill', d => d.color)
+
+    let draw_line = y => {
+        cal.append('line')
+            .attr('y1', yScale(time(y)))
+            .attr('y2', yScale(time(y)))
+            .attr('x1', 0)
+            .attr('x2', width - margin.right)
+            .attr('fill', 'black')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 2.5)
+    }
+
+    let draw_text = (y, text) => {
+        cal.append('text')
+            .attr('x', lm)
+            .attr('y', yScale(time(y)))
+            .attr('font-family', 'sans-serif')
+            .attr('font-size', 11)
+            .attr('font-weight', 'bold')
+            .text(text)
+            .call(wrap, width - margin.right - lm)
+    }
+
+    draw_line('2021-03-27 15:00:00');
+    draw_text(
+        '2021-03-27 15:30:00',
+        'The blue line above is me visiting Piazza (a class forum we use for EECS 281) to find answers to technical questions for a project that was due on April 1st. March 27th was my first day starting on the project!'
+        )
+
+    draw_line('2021-01-23 12:15:00');
+    draw_text(
+        '2021-01-23 12:45:00',
+        'This was the first weekend during which I spent time researching for The Michigan Daily data series on salaries and budget which I just released last Wednesday. The blue and yellow circles are Google searches and official U-M websites that I visited to try and categorize departments and staff members. If you see more of this blue and yellow pattern in the coming weeks, it was most likely more research for the series.'
+    )
+
+    draw_line('2021-01-29 12:00:00');
+    draw_text(
+        '2021-01-29 12:10:00',
+        'More salary data series research during this weekend.'
+    )
+
+    draw_line('2021-02-03 21:55:00');
+    draw_text(
+        '2021-02-03 20:30:00',
+        'Close Reading Genius song lyric research.'
+    );
+
+    draw_line('2021-03-06 07:00:00');
+    draw_text(
+        '2021-03-06 07:15:00',
+        'Most of the blue circles here are from juggling between several Google Docs and Sheets in preparation for a meeting with reporters from The Daily news section to discuss writing stories for the salary data series.'
+    );
+
+    draw_line('2021-03-03 15:30:00');
+    draw_text(
+        '2021-03-03 15:40:00',
+        'The light blue circles above are from me refreshing Twitter over and over again to check on how the feeder schools series was doing on social media. It was my first major project for The Daily!'
+    );
+
+    draw_line('2021-04-16 00:00:00');
+    draw_text(
+        '2021-04-16 00:00:00',
+        'The gray and blue circles above are from Google searches and visits for sites that contaiend data on Michigan law enforcement salaries. This data was used in the salary series in comparison to DPSS funding.'
+    )
+
     draw_head();
 }
