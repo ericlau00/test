@@ -2,6 +2,27 @@ import sqlite3
 from json import load, dump
 from pprint import pprint 
 
+# with open('domain_top_tmp.json') as f:
+#     domains = load(f)
+
+# with open('domain_top.json') as f:
+#     match = load(f)
+
+# for i in range(len(domains)):
+#     for x in match:
+#         if x['domain'] == domains[i]['domain']:
+#             if 'label' in x:
+#                 domains[i]['label'] = x['label']
+#             else:
+#                 domains[i]['label'] = domains[i]['domain'].capitalize()
+#             if 'color' in x:
+#                 domains[i]['color'] = x['color']
+#             else: 
+#                 domains[i]['color'] = 'gray'
+
+# with open('domain_top_tmp.json', 'w') as f:
+#     dump(domains, f, indent=2)
+
 with open('domains.json', 'r') as f:
     dlist = load(f)
 
@@ -35,7 +56,7 @@ for row in cur.execute(
     """
         SELECT datetime(v.visit_time + 978307200, 'unixepoch', 'localtime') AS date, v.visit_time, v.title, i.domain_expansion, i.url, i.visit_count
         FROM history_items i LEFT JOIN history_visits v ON i.id = v.history_item
-        WHERE date BETWEEN '2021-02-03 23:00:00' AND '2021-02-04 11:00:00'
+        WHERE date >= '2021-01-19 00:00:00'
         ORDER BY v.visit_time ASC;
     """
     ):
@@ -63,7 +84,7 @@ for row in cur.execute(
                         })
                     g.add(row[2])
                 else:
-                    print(domain)
+                    # print(domain)
                     extra.append({
                         'time': row[0],
                         # 'url': row[4],
@@ -94,7 +115,7 @@ for row in cur.execute(
                 'time': row[0],
                 'domain': domain
             })
-            print(domain)
+            # print(domain)
             # songs.add(row[2])
         # domain_set.add(domain)
 
@@ -103,14 +124,14 @@ for row in cur.execute(
 other = 0
 remove = list()
 for domain in domains:
-    if domains[domain] < 19:
+    if domains[domain] < 20:
         other += domains[domain]
         remove.append(domain)
 
 for d in remove:
     domains.pop(d)
 
-# domains['other'] = domains.pop(None) + other
+domains['other'] = domains.pop(None) + other
 
 d = [{'domain': item[0], 'visits': item[1]} for item in domains.items()]
 d = sorted(d, key=lambda item: item['visits'], reverse=True)
@@ -120,5 +141,5 @@ print(len(d), count)
 # with open('domain_top_tmp.json', 'w') as f:
 #     dump(d, f, indent=2)
 
-with open('extra.json', 'w') as f:
-    dump(extra, f, indent=2, ensure_ascii=False)
+# with open('extra.json', 'w') as f:
+#     dump(extra, f, indent=2, ensure_ascii=False)

@@ -3,3 +3,6 @@
 
 # Domain mapping
 domains.json
+
+# Other
+.DS_Store

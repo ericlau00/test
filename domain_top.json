@@ -1,534 +1,590 @@
 [
   {
     "domain": "twitter",
-    "visits": 10611,
+    "visits": 13183,
+    "label": "Twitter",
     "color": "#1DA1F2"
   },
   {
     "domain": "github",
-    "visits": 10432,
-    "color": "#24292E",
-    "label": "GitHub"
+    "visits": 11282,
+    "label": "GitHub",
+    "color": "#24292E"
   },
   {
     "domain": "google",
-    "visits": 8598,
+    "visits": 9549,
+    "label": "Google",
     "color": "#4285F4"
   },
   {
     "domain": "youtube",
-    "visits": 7287,
-    "color": "#FF0000",
-    "label": "YouTube"
+    "visits": 8172,
+    "label": "YouTube",
+    "color": "#FF0000"
   },
   {
     "domain": "docs.google",
-    "visits": 4920,
-    "color": "#4285F4",
-    "label": "Google Docs"
+    "visits": 5302,
+    "label": "Google Docs",
+    "color": "#4285F4"
   },
   {
     "domain": "other",
-    "visits": 3931,
-    "color": "lightgray",
-    "label": "Other"
+    "visits": 4483,
+    "label": "Other",
+    "color": "lightgray"
   },
   {
     "domain": "instagram",
-    "visits": 3311,
+    "visits": 4002,
+    "label": "Instagram",
     "color": "#C32AA3"
   },
   {
     "domain": "mail.google",
-    "visits": 2765,
-    "color": "#EA4335",
-    "label": "Gmail"
+    "visits": 3155,
+    "label": "Gmail",
+    "color": "#EA4335"
   },
   {
     "domain": "umich.instructure",
-    "visits": 2565,
-    "color": "#E53C2E",
-    "label": "U-M Canvas"
+    "visits": 2920,
+    "label": "U-M Canvas",
+    "color": "#E53C2E"
   },
   {
     "domain": "michigandaily",
-    "visits": 1951,
-    "color": "rgb(49,65,101)",
-    "label": "The Michigan Daily"
-  },
-  {
-    "domain": "piazza",
-    "visits": 1770,
-    "color": "#3E7AAB"
+    "visits": 2710,
+    "label": "The Michigan Daily",
+    "color": "rgb(49,65,101)"
   },
   {
     "domain": "facebook",
-    "visits": 1685,
+    "visits": 2185,
+    "label": "Facebook",
     "color": "#4267B2"
   },
   {
-    "domain": "drive.google",
-    "visits": 1598,
-    "color": "#4285F4",
-    "label": "Google Drive"
+    "domain": "piazza",
+    "visits": 1888,
+    "label": "Piazza",
+    "color": "#3E7AAB"
   },
   {
-    "domain": "localhost",
-    "visits": 1178,
-    "label": "localhost"
+    "domain": "drive.google",
+    "visits": 1701,
+    "label": "Google Drive",
+    "color": "#4285F4"
   },
   {
     "domain": "wikipedia",
-    "visits": 1164,
+    "visits": 1308,
+    "label": "Wikipedia",
     "color": "#ACABAD"
   },
   {
+    "domain": "localhost",
+    "visits": 1207,
+    "label": "localhost",
+    "color": "gray"
+  },
+  {
     "domain": "trello",
-    "visits": 992,
+    "visits": 1024,
+    "label": "Trello",
     "color": "#0084D1"
   },
   {
     "domain": "twitch",
-    "visits": 892,
+    "visits": 974,
+    "label": "Twitch",
     "color": "#6441A4"
   },
   {
     "domain": "linkedin",
-    "visits": 561,
-    "color": "#2867B2",
-    "label": "LinkedIn"
+    "visits": 659,
+    "label": "LinkedIn",
+    "color": "#2867B2"
   },
   {
     "domain": "messenger",
-    "visits": 552,
+    "visits": 596,
+    "label": "Messenger",
     "color": "#0078FF"
   },
   {
     "domain": "genius",
-    "visits": 435,
+    "visits": 449,
+    "label": "Genius",
     "color": "#FFFF64"
   },
   {
     "domain": "eecs.umich",
-    "visits": 392,
-    "color": "#FFCB05",
-    "label": "U-M EECS"
+    "visits": 448,
+    "label": "U-M EECS",
+    "color": "#FFCB05"
   },
   {
     "domain": "calendar.google",
-    "visits": 355,
-    "color": "#4285F4",
-    "label": "Google Calendar"
+    "visits": 387,
+    "label": "Google Calendar",
+    "color": "#4285F4"
   },
   {
-    "domain": "michigandaily.us",
-    "visits": 330,
-    "color": "rgb(49,65,101)",
-    "label": "michigandaily.us"
+    "domain": "lsa.umich",
+    "visits": 365,
+    "label": "U-M LSA",
+    "color": "#FFCB05"
   },
   {
     "domain": "weblogin.umich",
-    "visits": 276,
-    "color": "#FFCB05",
-    "label": "U-M Login"
+    "visits": 337,
+    "label": "U-M Login",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "michigandaily.us",
+    "visits": 332,
+    "label": "michigandaily.us",
+    "color": "rgb(49,65,101)"
   },
   {
     "domain": "reddit",
-    "visits": 268,
+    "visits": 296,
+    "label": "Reddit",
     "color": "#FF4500"
   },
   {
     "domain": "nytimes",
-    "visits": 293,
-    "color": "black",
-    "label": "The New York Times"
+    "visits": 315,
+    "label": "The New York Times",
+    "color": "black"
   },
   {
     "domain": "stackoverflow",
-    "visits": 241,
-    "color": "#F48024",
-    "label": "StackOverflow"
+    "visits": 275,
+    "label": "StackOverflow",
+    "color": "#F48024"
   },
   {
-    "domain": "lsa.umich",
-    "visits": 220,
-    "color": "#FFCB05",
-    "label": "U-M LSA"
+    "domain": "michigandaily.github",
+    "visits": 231,
+    "label": "michigandaily.github",
+    "color": "rgb(49,65,101)"
   },
   {
     "domain": "figma",
-    "visits": 212,
+    "visits": 214,
+    "label": "Figma",
     "color": "#A259FF"
   },
   {
     "domain": "obp.umich",
-    "visits": 181,
-    "color": "#FFCB05",
-    "label": "U-M OBP"
+    "visits": 183,
+    "label": "U-M OBP",
+    "color": "#FFCB05"
   },
   {
     "domain": "s3.us-west-2.amazonaws",
-    "visits": 160,
-    "color": "#FF9900",
-    "label": "s3.us-west-2.amazonaws"
+    "visits": 172,
+    "label": "s3.us-west-2.amazonaws",
+    "color": "#FF9900"
+  },
+  {
+    "domain": "openpayrolls",
+    "visits": 161,
+    "label": "OpenPayrolls",
+    "color": "gray"
+  },
+  {
+    "domain": "observablehq",
+    "visits": 142,
+    "label": "Observable",
+    "color": "gray"
   },
   {
     "domain": "medicine.umich",
     "visits": 134,
-    "color": "#FFCB05",
-    "label": "U-M Medicine"
+    "label": "U-M Medicine",
+    "color": "#FFCB05"
   },
   {
-    "domain": "observablehq",
-    "visits": 128,
-    "label": "Observable"
+    "domain": "gradescope",
+    "visits": 133,
+    "label": "Gradescope",
+    "color": "gray"
   },
   {
-    "domain": "michigandaily.github",
-    "visits": 117,
-    "color": "rgb(49,65,101)",
-    "label": "michigandaily.github"
+    "domain": "govsalaries",
+    "visits": 133,
+    "label": "GovSalaries",
+    "color": "gray"
   },
   {
     "domain": "mden",
     "visits": 115,
-    "color": "#FFCB05",
-    "label": "MDen"
+    "label": "MDen",
+    "color": "#FFCB05"
   },
   {
-    "domain": "govsalaries",
-    "visits": 113,
-    "label": "GovSalaries"
+    "domain": "analytics.google",
+    "visits": 106,
+    "label": "Google Analytics",
+    "color": "#4285F4"
   },
   {
     "domain": "echo360",
-    "visits": 112,
-    "label": "echo360"
-  },
-  {
-    "domain": "gradescope",
-    "visits": 103
+    "visits": 104,
+    "label": "echo360",
+    "color": "gray"
   },
   {
     "domain": "gitlab.umich",
     "visits": 100,
-    "color": "#E2432A",
-    "label": "U-M GitLab"
+    "label": "U-M GitLab",
+    "color": "#E2432A"
   },
   {
-    "domain": "analytics.google",
-    "visits": 100,
-    "color": "#4285F4",
-    "label": "Google Analytics"
+    "domain": "zoom",
+    "visits": 96,
+    "label": "Zoom",
+    "color": "#2D8CFF"
   },
   {
     "domain": "umsalary",
     "visits": 95,
-    "label": "U-M Salary"
-  },
-  {
-    "domain": "zoom",
-    "visits": 93,
-    "color": "#2D8CFF"
-  },
-  {
-    "domain": "tweetdeck.twitter",
-    "visits": 79,
-    "color": "#1DA1F2",
-    "label": "TweetDeck"
+    "label": "U-M Salary",
+    "color": "gray"
   },
   {
     "domain": "developer.mozilla",
-    "visits": 76,
-    "label": "developer.mozilla"
+    "visits": 95,
+    "label": "developer.mozilla",
+    "color": "gray"
+  },
+  {
+    "domain": "tweetdeck.twitter",
+    "visits": 80,
+    "label": "TweetDeck",
+    "color": "#1DA1F2"
+  },
+  {
+    "domain": "when2meet",
+    "visits": 77,
+    "label": "when2meet",
+    "color": "gray"
   },
   {
     "domain": "mcommunity.umich",
     "visits": 72,
-    "color": "#FFCB05",
-    "label": "U-M MCommunity"
-  },
-  {
-    "domain": "when2meet",
-    "visits": 70,
-    "label": "when2meet"
+    "label": "U-M MCommunity",
+    "color": "#FFCB05"
   },
   {
     "domain": "ohyay",
     "visits": 69,
-    "label": "ohyay"
+    "label": "ohyay",
+    "color": "gray"
   },
   {
     "domain": "lib.umich",
     "visits": 67,
-    "color": "#FFCB05",
-    "label": "U-M Library"
+    "label": "U-M Library",
+    "color": "#FFCB05"
   },
   {
-    "domain": "wordpress",
-    "visits": 62,
-    "label": "WordPress"
+    "domain": "dpss.umich",
+    "visits": 61,
+    "label": "U-M DPSS",
+    "color": "#FFCB05"
   },
   {
     "domain": "groupme",
-    "visits": 81,
-    "label": "GroupMe"
+    "visits": 87,
+    "label": "GroupMe",
+    "color": "gray"
+  },
+  {
+    "domain": "hltv",
+    "visits": 60,
+    "label": "HLTV",
+    "color": "gray"
   },
   {
     "domain": "med.umich",
     "visits": 56,
-    "color": "#FFCB05",
-    "label": "U-M Medicine"
+    "label": "U-M Medicine",
+    "color": "#FFCB05"
   },
   {
-    "domain": "dpss.umich",
+    "domain": "wordpress",
+    "visits": 55,
+    "label": "WordPress",
+    "color": "gray"
+  },
+  {
+    "domain": "calculatorsoup",
     "visits": 53,
-    "color": "#FFCB05",
-    "label": "U-M DPSS"
-  },
-  {
-    "domain": "docs.woocommerce",
-    "visits": 44,
-    "label": "WooCommerce"
+    "label": "CalculatorSoup",
+    "color": "gray"
   },
   {
     "domain": "cplusplus",
-    "visits": 44,
-    "label": "cplusplus"
+    "visits": 50,
+    "label": "cplusplus",
+    "color": "gray"
   },
   {
     "domain": "inflationtool",
+    "visits": 47,
+    "label": "inflationtool",
+    "color": "gray"
+  },
+  {
+    "domain": "w3schools",
+    "visits": 46,
+    "label": "w3schools",
+    "color": "gray"
+  },
+  {
+    "domain": "geeksforgeeks",
+    "visits": 46,
+    "label": "GeeksForGeeks",
+    "color": "gray"
+  },
+  {
+    "domain": "wolverineaccess.umich",
     "visits": 43,
-    "label": "inflationtool"
+    "label": "U-M Wolverine Access",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "docs.woocommerce",
+    "visits": 42,
+    "label": "WooCommerce",
+    "color": "gray"
+  },
+  {
+    "domain": "shibboleth.umich",
+    "visits": 41,
+    "label": "U-M Login",
+    "color": "gray"
   },
   {
     "domain": "otter.ai",
     "visits": 40,
-    "label": "otter.ai"
+    "label": "otter.ai",
+    "color": "gray"
   },
   {
     "domain": "umich.bluera",
     "visits": 40,
-    "color": "#FFCB05",
-    "label": "U-M Bluera"
-  },
-  {
-    "domain": "wolverineaccess.umich",
-    "visits": 39,
-    "color": "#FFCB05",
-    "label": "U-M Wolverine Access"
+    "label": "U-M Bluera",
+    "color": "#FFCB05"
   },
   {
     "domain": "tagmanager.google",
     "visits": 39,
-    "color": "#4285F4",
-    "label": "Google Tag Manager"
-  },
-  {
-    "domain": "calculatorsoup",
-    "visits": 38,
-    "label": "CalculatorSoup"
+    "label": "Google Tag Manager",
+    "color": "#4285F4"
   },
   {
     "domain": "leadersandbest.umich",
     "visits": 37,
-    "color": "#FFCB05",
-    "label": "U-M Leaders and Best"
+    "label": "U-M Leaders and Best",
+    "color": "#FFCB05"
   },
   {
-    "domain": "chess",
-    "visits": 36
+    "domain": "numbeo",
+    "visits": 37,
+    "label": "Numbeo",
+    "color": "gray"
   },
   {
     "domain": "ny.gov",
     "visits": 36,
-    "label": "ny.gov"
+    "label": "ny.gov",
+    "color": "gray"
   },
   {
-    "domain": "numbeo",
-    "visits": 36
-  },
-  {
-    "domain": "w3schools",
-    "visits": 35,
-    "label": "w3schools"
-  },
-  {
-    "domain": "shibboleth.umich",
-    "visits": 34,
-    "label": "U-M Login"
+    "domain": "washtenaw",
+    "visits": 36,
+    "label": "Washtenaw County",
+    "color": "gray"
   },
   {
     "domain": "csprod.dsc.umich",
+    "visits": 35,
+    "label": "csprod.dsc.umich",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "accounts.google",
+    "visits": 35,
+    "label": "Google Accounts",
+    "color": "#4285F4"
+  },
+  {
+    "domain": "chess",
+    "visits": 34,
+    "label": "Chess",
+    "color": "gray"
+  },
+  {
+    "domain": "serendipity-books",
+    "visits": 34,
+    "label": "Serendipity Books",
+    "color": "gray"
+  },
+  {
+    "domain": "mlive",
     "visits": 33,
-    "color": "#FFCB05",
-    "label": "csprod.dsc.umich"
+    "label": "MLive",
+    "color": "gray"
   },
   {
     "domain": "careers.umich",
     "visits": 33,
-    "color": "#FFCB05",
-    "label": "U-M Careers"
-  },
-  {
-    "domain": "geeksforgeeks",
-    "visits": 32,
-    "label": "GeeksForGeeks"
-  },
-  {
-    "domain": "washtenaw",
-    "visits": 32,
-    "label": "Washtenaw County"
+    "label": "U-M Careers",
+    "color": "#FFCB05"
   },
   {
     "domain": "gist.github",
-    "visits": 31,
-    "color": "#24292E",
-    "label": "GitHub Gist"
-  },
-  {
-    "domain": "hltv",
-    "visits": 30,
-    "label": "HLTV"
-  },
-  {
-    "domain": "woocommerce",
-    "visits": 28,
-    "label": "WooCommerce"
-  },
-  {
-    "domain": "mlive",
-    "visits": 28,
-    "label": "MLive"
+    "visits": 32,
+    "label": "GitHub Gist",
+    "color": "#24292E"
   },
   {
     "domain": "umflint",
+    "visits": 31,
+    "label": "U-M Flint",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "tiktok",
     "visits": 28,
-    "color": "#FFCB05",
-    "label": "U-M Flint"
+    "label": "TikTok",
+    "color": "69C9D0"
+  },
+  {
+    "domain": "bl.ocks",
+    "visits": 28,
+    "label": "bl.ocks",
+    "color": "gray"
   },
   {
     "domain": "developer.wordpress",
     "visits": 27,
-    "label": "WordPress Developer"
+    "label": "WordPress Developer",
+    "color": "gray"
   },
   {
     "domain": "finance.umich",
     "visits": 27,
-    "color": "#FFCB05",
-    "label": "U-M Finance"
+    "label": "U-M Finance",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "ericlau00.github",
+    "visits": 27,
+    "label": "ericlau00.github",
+    "color": "gray"
+  },
+  {
+    "domain": "stuyspec",
+    "visits": 26,
+    "label": "Stuyvesant Spectator",
+    "color": "black"
+  },
+  {
+    "domain": "hr.umich",
+    "visits": 25,
+    "label": "U-M Human Resources",
+    "color": "#FFCB05"
   },
   {
     "domain": "housing.umich",
     "visits": 25,
-    "color": "#FFCB05",
-    "label": "U-M Housing"
+    "label": "U-M Housing",
+    "color": "#FFCB05"
   },
   {
-    "domain": "hr.umich",
+    "domain": "medium",
     "visits": 24,
-    "color": "#FFCB05",
-    "label": "U-M Human Resources"
-  },
-  {
-    "domain": "tiktok",
-    "visits": 23,
-    "color": "69C9D0",
-    "label": "TikTok"
+    "label": "Medium",
+    "color": "gray"
   },
   {
     "domain": "advanced-woo-search",
     "visits": 23,
-    "label": "advanced-woo-search"
+    "label": "advanced-woo-search",
+    "color": "gray"
   },
   {
     "domain": "cbwchc",
     "visits": 23,
-    "label": "cbwchc"
+    "label": "cbwchc",
+    "color": "gray"
   },
   {
     "domain": "nces.ed",
     "visits": 23,
-    "label": "nces.ed"
+    "label": "nces.ed",
+    "color": "gray"
   },
   {
-    "domain": "medium",
-    "visits": 23
+    "domain": "php",
+    "visits": 23,
+    "label": "PHP",
+    "color": "#B0B3D6"
   },
   {
     "domain": "issuu",
+    "visits": 23,
+    "label": "issuu",
+    "color": "gray"
+  },
+  {
+    "domain": "columbiaspectator",
+    "visits": 23,
+    "label": "Columbia Spectator",
+    "color": "gray"
+  },
+  {
+    "domain": "publicaffairs.vpcomm.umich",
     "visits": 22,
-    "label": "issuu"
+    "label": "U-M Public Affairs",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "umdearborn",
+    "visits": 22,
+    "label": "U-M Dearborn",
+    "color": "#FFCB05"
+  },
+  {
+    "domain": "bestplaces",
+    "visits": 22,
+    "label": "BestPlaces",
+    "color": "gray"
+  },
+  {
+    "domain": "openthebooks",
+    "visits": 22,
+    "label": "Open The Books",
+    "color": "gray"
   },
   {
     "domain": "groups.google",
     "visits": 21,
-    "color": "#4285F4",
-    "label": "Google Groups"
-  },
-  {
-    "domain": "accounts.google",
-    "visits": 21,
-    "color": "#4285F4",
-    "label": "Google Accounts"
+    "label": "Google Groups",
+    "color": "#4285F4"
   },
   {
     "domain": "research.umich",
     "visits": 21,
-    "color": "#FFCB05",
-    "label": "U-M Research"
-  },
-  {
-    "domain": "stuycs",
-    "visits": 21,
-    "label": "Stuyvesant CS"
-  },
-  {
-    "domain": "bestplaces",
-    "visits": 21,
-    "label": "BestPlaces"
-  },
-  {
-    "domain": "columbiaspectator",
-    "visits": 21,
-    "label": "Columbia Spectator"
-  },
-  {
-    "domain": "publicaffairs.vpcomm.umich",
-    "visits": 20,
-    "color": "#FFCB05",
-    "label": "U-M Public Affairs"
-  },
-  {
-    "domain": "census",
-    "visits": 20
-  },
-  {
-    "domain": "bl.ocks",
-    "visits": 20,
-    "label": "bl.ocks"
-  },
-  {
-    "domain": "sso.canvaslms",
-    "visits": 19,
-    "color": "#E53C2E",
-    "label": "Canvas"
-  },
-  {
-    "domain": "poetryfoundation",
-    "visits": 19,
-    "label": "Poetry Foundation"
-  },
-  {
-    "domain": "record.umich",
-    "visits": 19,
-    "color": "#FFCB05",
-    "label": "record.umich"
-  },
-  {
-    "domain": "uofmhealth",
-    "visits": 19,
-    "color": "#FFCB05",
-    "label": "uofmhealth"
+    "label": "U-M Research",
+    "color": "#FFCB05"
   }
 ]
