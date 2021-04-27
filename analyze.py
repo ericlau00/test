@@ -59,7 +59,7 @@ for row in cur.execute(
     """
         SELECT datetime(v.visit_time + 978307200, 'unixepoch', 'localtime') AS date, v.visit_time, v.title, i.domain_expansion, i.url, i.visit_count
         FROM history_items i LEFT JOIN history_visits v ON i.id = v.history_item
-        WHERE date BETWEEN '2021-04-15 13:00:00' AND '2021-04-16 00:00:00'
+        WHERE date >= '2021-03-13 12:00:00'
         ORDER BY v.visit_time ASC;
     """
     ):
@@ -73,28 +73,30 @@ for row in cur.execute(
             else:
                 domain = fix_domain(row)
                 domains[domain] = domains.get(domain, 0) + 1
-                count += 1
                 color = dmap[domain] if domain in dmap else 'gray'
                 x.append({
                     'time': row[0],
                     'domain': domain,
                     'color': color
                 })
-                # if domain == 'google':
-                print(row)
+                if ((row[2] != None and 'ludwig' in row[2].lower()) or 'ludwig' in row[4].lower()) and 'twitch' == domain:
+                    print(row)
+                    count += 1
     else:
         domain = fix_domain(row)
         domains[domain] = domains.get(domain, 0) + 1
-        count += 1
         color = dmap[domain] if domain in dmap else 'gray'
         x.append({
             'time': row[0],
             'domain': domain,
             'color': color
         })
-        # if domain == 'google':
-        print(row)
+        if ((row[2] != None and 'ludwig' in row[2].lower()) or 'ludwig' in row[4].lower())  and 'twitch' == domain:
+            print(row)
+            count += 1
     prev = row
+
+print(count)
 
 # other = 0
 # remove = list()

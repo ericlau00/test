@@ -100,3 +100,7 @@ article section {
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 2px 1px gray;
 }
+
+a {
+    color: gray;
+}

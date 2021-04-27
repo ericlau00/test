@@ -318,7 +318,7 @@ window.onload = async () => {
             }
         })
 
-    const cheight = 300 * 98;
+    const cheight = 250 * 98;
     let cdata = await d3.json('./test.json');
 
     const lm = 50;
@@ -384,15 +384,43 @@ window.onload = async () => {
             .call(wrap, width - margin.right - lm)
     }
 
-    draw_line('2021-03-27 15:00:00');
-    draw_text(
-        '2021-03-27 15:30:00',
-        'The blue line above is me visiting Piazza (a class forum we use for EECS 281) to find answers to technical questions for a project that was due on April 1st. March 27th was my first day starting on the project!'
-        )
+    let draw_title = (t, d) => {
+        draw_line(t)
+        cal.append('text')
+            .attr('x', lm)
+            .attr('y', yScale(time(t)))
+            .attr('dy', -5)
+            .attr('font-family', 'sans-serif')
+            .attr('font-size', 10)
+            .attr('font-weight', 'bold')
+            .text(d)
+    }
 
-    draw_line('2021-01-23 12:15:00');
+    draw_title('2021-01-19 00:00:00', '400,000 COVID-19 deaths in the United States');
+    draw_title('2021-02-22 06:00:00', '500,000 COVID-19 deaths in the United States');
+    draw_title('2021-04-22 06:00:00', '569,875 COVID-19 deaths in the United States');
+    draw_title('2021-04-20 18:00:00', 'Derek Chauvin is charged with murder.');
+    draw_title('2021-02-24 00:00:00', 'Wellness day');
+    draw_title('2021-03-16 18:00:00', 'Atlanta spa mass shootings');
+    draw_title('2021-03-23 00:00:00', 'Wellness day');
+    draw_title('2021-04-11 15:00:00', 'Killing of Daunte Wright');
+    draw_title('2021-04-16 00:00:00', 'Indianapolis FedEx mass shooting');
+
+    draw_line('2021-01-20 12:00:00')
     draw_text(
-        '2021-01-23 12:45:00',
+        '2021-01-20 10:30:00',
+        "Sporadic Twitter checking through the day and night below because of Joe Biden's inauguration."
+    )
+
+    draw_line('2021-01-22 15:30:00')
+    draw_text(
+        '2021-01-22 12:30:00',
+        "The gray circles directly below are from looking at documentation for WooCommerce, a WordPress extension used to sell products on online. I was researching as part of a tech consulting extracurricular."
+    )
+
+    draw_line('2021-01-23 13:00:00');
+    draw_text(
+        '2021-01-23 13:30:00',
         'This was the first weekend during which I spent time researching for The Michigan Daily data series on salaries and budget which I just released last Wednesday. The blue and yellow circles are Google searches and official U-M websites that I visited to try and categorize departments and staff members. If you see more of this blue and yellow pattern in the coming weeks, it was most likely more research for the series.'
     )
 
@@ -408,11 +436,11 @@ window.onload = async () => {
         'Close Reading Genius song lyric research.'
     );
 
-    draw_line('2021-03-06 07:00:00');
+    draw_line('2021-02-10 01:00:00')
     draw_text(
-        '2021-03-06 07:15:00',
-        'Most of the blue circles here are from juggling between several Google Docs and Sheets in preparation for a meeting with reporters from The Daily news section to discuss writing stories for the salary data series.'
-    );
+        '2021-02-09 22:35:00',
+        'The blue and gray circles below were from researching cost of living in Ann Arbor. The red circles after are from a YouTube break.'
+    )
 
     draw_line('2021-03-03 15:30:00');
     draw_text(
@@ -420,10 +448,51 @@ window.onload = async () => {
         'The light blue circles above are from me refreshing Twitter over and over again to check on how the feeder schools series was doing on social media. It was my first major project for The Daily!'
     );
 
+    draw_line('2021-03-06 07:00:00');
+    draw_text(
+        '2021-03-06 07:15:00',
+        'Most of the blue circles here are from juggling between several Google Docs and Sheets in preparation for a meeting with reporters from The Daily news section to discuss writing stories for the salary data series.'
+    );
+
+    draw_line('2021-03-26 06:00:00')
+    draw_text(
+        '2021-03-26 06:30:00',
+        'The dark blue and black circles above are me visiting GitHub and The Michigan Daily websites, updating data graphic drafts and previewing how they looked on the website.'
+    )
+
+    draw_line('2021-03-27 15:00:00');
+    draw_text(
+        '2021-03-27 15:30:00',
+        'The blue line above is me visiting Piazza (a class forum we use for EECS 281) to find answers to technical questions for a project that was due on April 1st. March 27th was my first day starting on the project!'
+        );
+
     draw_line('2021-04-16 00:00:00');
     draw_text(
         '2021-04-16 00:00:00',
         'The gray and blue circles above are from Google searches and visits for sites that contaiend data on Michigan law enforcement salaries. This data was used in the salary series in comparison to DPSS funding.'
+    );
+
+    draw_line('2021-04-18 03:00:00');
+    draw_text(
+        '2021-04-18 03:10:00',
+        'The yellow and blue circles above are for another EECS 281 project! The due date was April 19th, two days after I started. The yellows are me submitting code for the projects to check for correctness, and the blues are me checking Piazza, the class forum.')
+
+    draw_line('2021-04-21 04:00:00')
+    draw_text(
+        '2021-04-21 04:15:00',
+        'The dark blue circles above are me visiting The Michigan Daily website repeatedly during the publication process for the salary series, making sure every detail in the stories was correct.'
+    )
+
+    draw_line('2021-04-23 22:15:00');
+    draw_text(
+        '2021-04-23 22:25:00',
+        'EECS 281 Final! The block prior to this empty portion was all "studying."'
+    )
+
+    draw_line('2021-04-24 06:00:00');
+    draw_text(
+        '2021-04-24 06:25:00',
+        'Immediately after finishing the final, I did a bunch of technical research for how to do all of the data visuals for this assignment.'
     )
 
     draw_head();
