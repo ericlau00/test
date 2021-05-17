@@ -1,4 +1,4 @@
-function wrap(text, width) {
+const wrap = (text, width) => {
     text.each(function () {
         let text = d3.select(this),
             words = text.text().split(/\s+/).reverse(),
@@ -33,7 +33,7 @@ const delay = time => {
 
 const draw_head = async () => {
     let head = document.getElementById('head-graphic');
-    let domain_set = await d3.json('./domain_set.json');
+    let domain_set = await d3.json('./json/domain/set.json');
 
     for (const domain of domain_set) {
         for (const letter of domain) {
@@ -44,8 +44,7 @@ const draw_head = async () => {
 }
 
 window.onload = async () => {    
-    let domain_top = await d3.json('./domain_top.json');
-    console.log(domain_top.length);
+    let domain_top = await d3.json('./json/domain/top.json');
 
     let comma = d3.format(',');
 
@@ -131,7 +130,7 @@ window.onload = async () => {
     let not_genius = circle.filter(d => !is_genius(d))
     let genius = circle.filter(is_genius);
 
-    let swarm_data = await d3.json('genius.json');
+    let swarm_data = await d3.json('./json/genius/main.json');
     swarm_data.reverse();
     let time = d3.timeParse('%Y-%m-%d %H:%M:%S');
     let tformat = d3.timeFormat("%I %p")
@@ -200,15 +199,14 @@ window.onload = async () => {
         .force('collide', d3.forceCollide(5))
         .on('tick', tick)
 
-    let extra = await d3.json('./extra.json');
+    let extra = await d3.json('./json/genius/extra.json');
     let combine = swarm_data.concat(extra);
 
     let scoller = scrollama();
     scoller
         .setup({
             step: ".step",
-            offset: 0.75,
-            // debug: true
+            offset: 0.75
         })
         .onStepEnter(async res =>  {
             if (res.index === 0 && res.direction === "down") {
@@ -319,7 +317,7 @@ window.onload = async () => {
         })
 
     const cheight = 250 * 98;
-    let cdata = await d3.json('./test.json');
+    let cdata = await d3.json('./json/history.json');
 
     const lm = 50;
 
@@ -357,7 +355,6 @@ window.onload = async () => {
         .data(cdata)
         .join('circle')
             .attr('r', 4)
-            // .attr('cx', (d, i) => (i * 7) % (width - lm - margin.right) + lm)
             .attr('cx', d => (Math.random() * (width - lm - margin.right)) + lm)
             .attr('cy', d => yScale(time(d.time)))
             .attr('fill', d => d.color)

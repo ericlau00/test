@@ -23,10 +23,10 @@ from pprint import pprint
 # with open('domain_top_tmp.json', 'w') as f:
 #     dump(domains, f, indent=2)
 
-with open('domains.json', 'r') as f:
+with open('./json/domain/map.json', 'r') as f:
     dlist = load(f)
 
-with open('domain_top.json') as f:
+with open('./json/domain/top.json') as f:
     ds = load(f)
 
 dmap = dict()
