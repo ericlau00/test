@@ -6,3 +6,6 @@ domains.json
 
 # Other
 .DS_Store
+
+# Temporary
+test.json
