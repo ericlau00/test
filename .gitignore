@@ -2,7 +2,7 @@
 *.db*
 
 # Domain mapping
-domains.json
+json/domain/map.json
 
 # Other
 .DS_Store
